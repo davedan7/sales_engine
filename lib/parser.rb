@@ -9,6 +9,3 @@ module Parser
 
 
 end
-
-ed = Parser.new
-print ed.parse('./data/merchants.csv')
