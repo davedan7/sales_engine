@@ -2,69 +2,65 @@ require 'simplecov'
 SimpleCov.start
 require 'minitest'
 require 'minitest/autorun'
-require_relative 'item'
+require_relative '../lib/item'
 
 class ItemTest < Minitest::Test
+
+  def setup
+    @data = { id: 28,
+              name: "Item Quos Dolorum",
+              description: "Non rerum quas ullam magni. Porro nemo similique veritatis. Voluptatem recusandae quis minus.",
+              unit_price: 15285,
+              merchant_id: 2,
+              created_at: "2012-03-27 14:53:59 UTC",
+              updated_at: "2012-03-27 14:53:59 UTC" }
+  end
   
   def test_it_has_a_default_id
-    item = Item.new(item_id)
+    item = Item.new(data, nil)
 
-    assert_equal "0000", item.item_id 
+    assert_equal 28, item.id 
   end
 
   def test_item_has_name
     skip
-    item = Item.new(item_id, item_name)
+    item = Item.new(data, nil)
 
-    assert_equal "no item", item.item_name
+    assert_equal "Item Quos Dolorum", item.name
   end
 
   def test_item_has_description
     skip
-    item = Item.new(item_id, item_name, item_description)
+    item = Item.new(data, nil)
 
-    assert_equal "unknown", item.item_description
+    assert_equal "Non rerum quas ullam magni. Porro nemo similique veritatis. Voluptatem recusandae quis minus.", item.description
   end
 
   def test_item_has_unit_price
     skip
-    item = Item.new(item_id, item_name, item_description, unit_price)
+    item = Item.new(data, nil)
 
-    assert_equal #not sure how to test for big decimal
+    assert_equal 15285, item.unit_price
   end
 
   def test_item_has_merchant_id
     skip
-    item = Item.new(item_id, item_name, item_description, unit_price, merchant_id)
+    item = Item.new(data, nil)
 
-    assert_equal "000", item.merchant_id #is this right?
+    assert_equal 2, item.merchant_id 
   end
 
-  def test_item_has_date_of_creation_in_yyyymmdd_format
+  def test_item_has_date_of_creation_in_yyyymmdd_hhmms_format
     skip
-    item = Item.new(item_id, item_name, item_description, unit_price, merchant_id, item_created_at)
-
-    assert_equal "2012-03-27", item.item_created_at
-  end
-
-  def test_item_has_a_time_of_creation_in_hhmmss_UTC_format
-    skip
-    item = Item.new(item_id, item_name, item_description, unit_price, merchant_id, item_created_at)
+    item = Item.new(data, nil)
 
     assert_equal "2012-03-27 14:53:59 UTC", item.created_at
   end
 
-  def test_item_has_updated_date_in_yyymmdd_format
+  def test_item_has_updated_date_in_yyymmdd_hhmmss_format
     skip
-    item = Item.new(item_id, item_name, item_description, unit_price, merchant_id, item_created_at, item_updated_at)
+    item = Item.new(data, nil)
 
-    assert_equal "2012-03-27", item.item_updated_at
-  end
-
-  def test_merchant_has_updated_time_in_hhmmss_UTC_format
-    skip
-    item = Item.new(merchant_id, merchant_name, created_at, item_updated_at)
-
-    assert_equal "2012-03-27 14:53:59 UTC", item.item_updated_at
+    assert_equal "2012-03-27", item.updated_at
   end
 end
