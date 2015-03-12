@@ -4,7 +4,6 @@ require 'minitest'
 require 'minitest/autorun'
 require_relative 'item'
 
-
 class ItemTest < Minitest::Test
   
   def test_it_has_a_default_id
@@ -61,6 +60,7 @@ class ItemTest < Minitest::Test
 
     assert_equal "2012-03-27", item.item_updated_at
   end
+
   def test_merchant_has_updated_time_in_hhmmss_UTC_format
     skip
     item = Item.new(merchant_id, merchant_name, created_at, item_updated_at)
