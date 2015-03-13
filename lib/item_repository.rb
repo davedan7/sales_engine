@@ -16,4 +16,12 @@ class ItemRepository
     "#<{self.class} #{@items.size} rows>"
   end
 
+  def all
+    items
+  end
+
+  def random
+    items.sample
+  end
+
 end
