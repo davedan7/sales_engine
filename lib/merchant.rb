@@ -1,5 +1,3 @@
-require 'csv'
-
 class Merchant
 
   attr_reader :id,

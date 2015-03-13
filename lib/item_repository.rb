@@ -1,4 +1,4 @@
-require_relative 'items'
+require_relative 'item'
 require_relative 'parser'
 
 class ItemRepository
@@ -9,7 +9,7 @@ class ItemRepository
 
   def initialize(data, engine)
     @engine = engine
-    @items = data.map { |line| Item.new(line, self) }
+    @items  = data.map { |line| Item.new(line, self) }
   end
 
   def inspect
