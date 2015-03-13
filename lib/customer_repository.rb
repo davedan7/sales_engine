@@ -9,7 +9,7 @@ class CustomerRepository
 
   def initialize(data, engine)
     @engine    = engine
-    @customers = data.map { |line| Merchant.new(line, self) }
+    @customers = data.map { |line| Customer.new(line, self) }
   end
 
   def inspect
