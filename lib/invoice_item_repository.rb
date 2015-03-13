@@ -14,4 +14,12 @@ class InvoiceItemRepository
     "#<{self.class} #{@invoice_items.size} rows>"
   end
 
+  def all
+    invoice_items
+  end
+
+  def random
+    invoice_items.sample
+  end
+
 end
