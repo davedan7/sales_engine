@@ -17,50 +17,44 @@ class ItemTest < Minitest::Test
   end
   
   def test_it_has_a_default_id
-    item = Item.new(data, nil)
+    item = Item.new(@data , nil)
 
     assert_equal 28, item.id 
   end
 
   def test_item_has_name
-    skip
-    item = Item.new(data, nil)
+    item = Item.new(@data, nil)
 
     assert_equal "Item Quos Dolorum", item.name
   end
 
   def test_item_has_description
-    skip
-    item = Item.new(data, nil)
+    item = Item.new(@data, nil)
 
     assert_equal "Non rerum quas ullam magni. Porro nemo similique veritatis. Voluptatem recusandae quis minus.", item.description
   end
 
   def test_item_has_unit_price
-    skip
-    item = Item.new(data, nil)
+    item = Item.new(@data, nil)
 
     assert_equal 15285, item.unit_price
   end
 
   def test_item_has_merchant_id
-    skip
-    item = Item.new(data, nil)
+    item = Item.new(@data, nil)
 
     assert_equal 2, item.merchant_id 
   end
 
   def test_item_has_date_of_creation_in_yyyymmdd_hhmms_format
-    skip
-    item = Item.new(data, nil)
+    item = Item.new(@data, nil)
 
     assert_equal "2012-03-27 14:53:59 UTC", item.created_at
   end
 
   def test_item_has_updated_date_in_yyymmdd_hhmmss_format
-    skip
-    item = Item.new(data, nil)
+    item = Item.new(@data, nil)
 
-    assert_equal "2012-03-27", item.updated_at
+    assert_equal "2012-03-27 14:53:59 UTC", item.updated_at
   end
 end

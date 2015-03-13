@@ -15,36 +15,31 @@ class CustomerTest < Minitest::Test
   end
 
   def test_customer_has_id
-    skip
-    customer = Customer.new(data, nil)
+    customer = Customer.new(@data, nil)
 
     assert_equal 3, customer.id
   end
 
   def test_customer_has_first_name
-    skip
-    customer = Customer.new(data, nil)
+    customer = Customer.new(@data, nil)
 
     assert_equal "Mariah", customer.first_name
   end
 
   def test_customer_has_last_name
-    skip
-    customer = Customer.new(data, nil)
+    customer = Customer.new(@data, nil)
 
     assert_equal "Toy", customer.last_name
   end
 
   def test_customer_has_date_of_creation_in_yyyymmdd_hhmmss_format
-    skip
-    customer = Customer.new(data, nil)
+    customer = Customer.new(@data, nil)
 
     assert_equal "2012-03-27 14:54:10 UTC", customer.created_at
   end
 
   def test_customer_has_update_date_in_yyyymmdd_hhmmss_format
-    skip
-    customer = Customer.new(data, nil)
+    customer = Customer.new(@data, nil)
 
     assert_equal "2012-03-27 14:54:10 UTC", customer.updated_at
   end
