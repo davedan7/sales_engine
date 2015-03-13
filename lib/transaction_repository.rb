@@ -1,4 +1,4 @@
-require_relative 'items'
+require_relative 'transaction'
 require_relative 'parser'
 
 class TransactionRepository

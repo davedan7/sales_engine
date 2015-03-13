@@ -6,7 +6,7 @@ class Item
               :id,
               :description,
               :created_at,
-              :name
+              :name,
               :updated_at
 
   def initialize(data, repository)
