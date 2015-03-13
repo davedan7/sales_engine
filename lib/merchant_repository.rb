@@ -14,7 +14,6 @@ class MerchantRepository
     @merchants = data.map { |line| Merchant.new(line, self) }
   end
 
-# Inspect is needed to run spec harness. Will need one for every class
   def inspect
     "#<{self.class} #{merchants.size} rows>"
   end

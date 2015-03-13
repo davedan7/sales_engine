@@ -16,4 +16,12 @@ class CustomerRepository
     "#<{self.class} #{customers.size} rows>"
   end
 
+  def all
+    customers
+  end
+
+  def random
+    customers.sample
+  end
+
 end
