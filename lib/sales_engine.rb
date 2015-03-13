@@ -4,6 +4,7 @@ require_relative 'customer_repository'
 require_relative 'item_repository'
 require_relative 'transaction_repository'
 require_relative 'invoice_item_repository'
+require_relative 'invoice_repository'
 require_relative 'parser'
 
 class SalesEngine
@@ -12,7 +13,9 @@ class SalesEngine
   attr_reader :merchant_repository,
               :customer_repository,
               :item_repository,
-              :transaction_repository
+              :transaction_repository,
+              :invoice_repository,
+              :invoice_item_repository
 
   include Parser
 
@@ -50,12 +53,12 @@ class SalesEngine
 
   def create_invoice_item_repository
     invoice_item_data         = parse("#{@filepath}/invoice_items.csv")
-    @invoice_item_repository  = InvoiceItem.new(invoice_item_data, self)
+    @invoice_item_repository  = InvoiceItemRepository.new(invoice_item_data, self)
   end
 
   def create_invoice_repository
     invoice_data              = parse("#{@filepath}/invoices.csv")
-    @invoice_repository       = Invoice.new(invoice_data, self)
+    @invoice_repository       = InvoiceRepository.new(invoice_data, self)
   end
 
 end

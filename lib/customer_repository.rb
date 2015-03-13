@@ -1,4 +1,4 @@
-require_relative 'customers'
+require_relative 'customer'
 require_relative 'parser'
 
 class CustomerRepository
