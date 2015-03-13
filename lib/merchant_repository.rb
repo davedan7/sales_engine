@@ -26,4 +26,8 @@ class MerchantRepository
     merchants.sample
   end
 
+  # def find_by_id(id)
+  #   merchants.find
+  # end
+
 end
