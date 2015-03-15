@@ -2,7 +2,7 @@ require 'simplecov'
 SimpleCov.start
 require 'minitest'
 require 'minitest/autorun'
-require_relative '../lib/invoice_items'
+require_relative '../lib/invoice_item'
 
 class InvoiceItemTest < Minitest::Test
 
