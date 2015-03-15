@@ -17,7 +17,6 @@ class InvoiceItemTest < Minitest::Test
   end
 
   def test_invoice_item_has_an_id
-    skip
     invoice_item = InvoiceItem.new(data, nil)
 
     assert_equal 2, invoice_item.id

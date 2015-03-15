@@ -15,7 +15,6 @@ class MerchantTest < Minitest::Test
   end
 
   def test_merchant_has_a_default_id
-    skip
     merchant = Merchant.new(data, nil)
 
     assert_equal 1, merchant.id

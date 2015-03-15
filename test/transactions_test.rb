@@ -17,7 +17,6 @@ class TransactionTest < Minitest::Test
   end
 
   def test_transaction_has_id
-    skip
     transaction = Transaction.new(data, nil)
 
     assert_equal 2, transaction.id

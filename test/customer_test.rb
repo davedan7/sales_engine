@@ -15,7 +15,6 @@ class CustomerTest < Minitest::Test
   end
 
   def test_customer_has_id
-    skip
     customer = Customer.new(data, nil)
 
     assert_equal 3, customer.id

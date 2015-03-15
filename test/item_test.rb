@@ -23,7 +23,6 @@ class ItemTest < Minitest::Test
   end
 
   def test_item_has_name
-    skip
     item = Item.new(data, nil)
 
     assert_equal "Item Quos Dolorum", item.name
