@@ -3,7 +3,7 @@ require_relative 'parser'
 
 class MerchantRepository
 
-  attr_reader :merchants
+  attr_reader :merchants, :engine
 
   include Parser
 
@@ -35,7 +35,7 @@ class MerchantRepository
   end
 
   def find_by_name(name)
-    merchants.find { |merchant| merchant.name.downcase == name.downcase }
+    merchants.find { |merchant| merchant.name == name }
   end
   
   def find_all_by_name(name)
@@ -56,6 +56,10 @@ class MerchantRepository
   
   def find_all_by_updated_at(updated_at)
     merchants.select { |merchant| merchant.updated_at == updated_at }
+  end
+  
+  def find_items(id)
+    engine.find_items(id)
   end
   
 end
