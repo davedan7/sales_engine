@@ -89,28 +89,28 @@ class InvoiceRepositoryTest < Minitest::Test
 
   def test_it_can_find_by_created_at
     invoice_repo = InvoiceRepository.new(@fixtures, nil)
-    result       = invoice_repo.find_by_created_at(Date.parse("2012-03-09 01:54:10 UTC"))
+    result       = invoice_repo.find_by_created_at "2012-03-09 01:54:10 UTC"
 
     assert_equal 6, result.id
   end
 
   def test_it_can_find_all_by_created_at
     invoice_repo = InvoiceRepository.new(@fixtures, nil)
-    result       = invoice_repo.find_all_by_created_at(Date.parse("2012-03-09 01:54:10 UTC"))
+    result       = invoice_repo.find_all_by_created_at "2012-03-09 01:54:10 UTC"
 
     assert_equal 1, result.count
   end
 
   def test_it_can_find_by_updated_at
     invoice_repo = InvoiceRepository.new(@fixtures, nil)
-    result       = invoice_repo.find_by_updated_at("2012-03-10 00:54:09 UTC")
+    result       = invoice_repo.find_by_updated_at "2012-03-10 00:54:09 UTC"
 
     assert_equal 3, result.id
   end
 
   def test_it_can_find_all_by_updated_at
     invoice_repo = InvoiceRepository.new(@fixtures, nil)
-    result       = invoice_repo.find_all_by_updated_at("2012-03-09 01:54:10 UTC")
+    result       = invoice_repo.find_all_by_updated_at "2012-03-09 01:54:10 UTC"
 
     assert_equal 1, result.count
   end

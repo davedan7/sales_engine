@@ -40,7 +40,7 @@ class InvoiceItemTest < Minitest::Test
   def test_invoice_item_has_a_unit_price
     invoice_item = InvoiceItem.new(@data, nil)
     
-    assert_equal 13635, invoice_item.unit_price
+    assert_equal (BigDecimal.new(13635)/100), invoice_item.unit_price
   end
 
   def test_invoice_item_has_date_of_creation_in_yyyymmdd_hhmmss_format

@@ -108,28 +108,28 @@ class ItemRepositoryTest < Minitest::Test
 
   def test_it_can_find_by_created_at
     item_repo = ItemRepository.new(@fixtures, nil)
-    result    = item_repo.find_by_created_at("2012-03-27 14:53:59 UTC")
+    result    = item_repo.find_by_created_at "2012-03-27 14:53:59 UTC"
 
     assert_equal 1, result.id
   end
 
   def test_it_can_find_all_by_created_at
     item_repo = ItemRepository.new(@fixtures, nil)
-    result    = item_repo.find_all_by_created_at("2012-03-27 14:53:59 UTC")
+    result    = item_repo.find_all_by_created_at "2012-03-27 14:53:59 UTC"
 
     assert_equal 10, result.count
   end
 
   def test_it_can_find_by_updated_at
     item_repo = ItemRepository.new(@fixtures, nil)
-    result    = item_repo.find_by_updated_at("2012-03-27 14:53:59 UTC")
+    result    = item_repo.find_by_updated_at "2012-03-27 14:53:59 UTC"
 
     assert_equal 1, result.id
   end
 
   def test_it_can_find_all_by_updated_at
     item_repo = ItemRepository.new(@fixtures, nil)
-    result    = item_repo.find_all_by_updated_at("2012-03-27 14:53:59 UTC")
+    result    = item_repo.find_all_by_updated_at "2012-03-27 14:53:59 UTC"
 
     assert_equal 10, result.count
   end

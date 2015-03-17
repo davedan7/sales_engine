@@ -13,7 +13,7 @@ class CustomerRepositoryTest < Minitest::Test
   end
 
   def test_it_knows_its_parent
-    engine = SalesEngine.new("stub")
+    engine        = SalesEngine.new("stub")
     customer_repo = CustomerRepository.new(@fixtures, engine)
     
     assert_equal engine, customer_repo.engine
@@ -76,28 +76,28 @@ class CustomerRepositoryTest < Minitest::Test
 
   def test_it_can_find_by_created_at
     customer_repo = CustomerRepository.new(@fixtures, nil)
-    result        = customer_repo.find_by_created_at("2012-03-27 14:54:09 UTC")
+    result        = customer_repo.find_by_created_at "2012-03-27 14:54:09 UTC"
 
     assert_equal 1, result.id
   end
 
   def test_it_can_find_all_by_created_at
     customer_repo = CustomerRepository.new(@fixtures, nil)
-    result        = customer_repo.find_all_by_created_at("2012-03-27 14:54:10 UTC")
+    result        = customer_repo.find_all_by_created_at "2012-03-27 14:54:10 UTC"
 
     assert_equal 6, result.count
   end
 
   def test_it_can_find_by_updated_at
     customer_repo = CustomerRepository.new(@fixtures, nil)
-    result        = customer_repo.find_by_updated_at("2012-03-27 14:54:09 UTC")
+    result        = customer_repo.find_by_updated_at "2012-03-27 14:54:09 UTC"
 
     assert_equal 1, result.id
   end
 
   def test_it_can_find_all_by_updated_at
     customer_repo = CustomerRepository.new(@fixtures, nil)
-    result        = customer_repo.find_all_by_updated_at("2012-03-27 14:54:11 UTC")
+    result        = customer_repo.find_all_by_updated_at "2012-03-27 14:54:11 UTC"
 
     assert_equal 3, result.count
   end
@@ -106,6 +106,7 @@ class CustomerRepositoryTest < Minitest::Test
     engine        = FakeEngine.new
     customer_repo = CustomerRepository.new(@fixtures, engine)
     invoices      = customer_repo.find_invoices(3)
+    
     assert_equal "test invoice 3", invoices 
   end
 end

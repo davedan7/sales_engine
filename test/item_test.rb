@@ -51,7 +51,7 @@ class ItemTest < Minitest::Test
 
   def test_item_has_updated_date_in_yyymmdd_hhmmss_format
     item = Item.new(@data, nil)
+
     assert_equal "2012-03-27 14:53:59 UTC", item.updated_at
-    # assert_equal "2012-03-27", item.updated_at
   end
 end
