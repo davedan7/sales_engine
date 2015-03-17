@@ -102,4 +102,12 @@ class SalesEngine
     merchant_repository.find_by_id(merchant_id)
   end
 
+  def find_invoice_by_id(invoice_id)
+    invoice_repository.find_by_id(invoice_id)
+  end
+
+  def find_invoices_by_customer_id(id)
+    invoice_repository.find_all_by_customer_id(id)
+  end
+
 end

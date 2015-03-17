@@ -77,4 +77,8 @@ class TransactionRepository
     transactions.select { |transaction| transaction.updated_at == updated_at }
   end
 
+  def find_invoice(invoice_id)
+    engine.find_invoice_by_id(invoice_id)
+  end
+
 end

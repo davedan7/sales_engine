@@ -116,4 +116,10 @@ class SalesEngineTest < Minitest::Test
     assert_equal "Klein, Rempel and Jones", merchant2.name
   end
 
+  def test_it_finds_invoice_by_invoice_id
+    invoice = @engine.find_invoice_by_id(1)
+    assert_equal 26, invoice.merchant_id
+    assert_equal "2012-03-25 09:54:09 UTC", invoice.created_at
+  end
+
 end
