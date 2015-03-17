@@ -3,7 +3,7 @@ class Merchant
   attr_reader :id,
               :name,
               :created_at,
-              :updated_at
+              :updated_at,
               :repository
 
   def initialize(data, repository)
