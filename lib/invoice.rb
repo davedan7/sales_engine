@@ -16,7 +16,7 @@ class Invoice
     @merchant_id  = data[:merchant_id].to_i
     @status       = data[:status]
     @created_at   = Date.parse(data[:created_at])
-    @updated_at   = data[:updated_at]
+    @updated_at   = Date.parse(data[:updated_at])
   end
 
   def transactions
@@ -33,10 +33,10 @@ class Invoice
   end
 
   def customer
-    repository.find_customer(id)
+    repository.find_customer(customer_id)
   end
 
   def merchant
-    repository.find_merchant(id)
+    repository.find_merchant(merchant_id)
   end
 end
