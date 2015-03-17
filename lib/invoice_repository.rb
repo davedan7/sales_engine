@@ -3,7 +3,7 @@ require_relative 'parser'
 
 class InvoiceRepository
 
-  attr_reader :invoices
+  attr_reader :invoices, :engine
 
   include Parser
 
@@ -67,9 +67,24 @@ class InvoiceRepository
   def find_by_updated_at(updated_at)
     invoices.find { |invoice| invoice.updated_at == updated_at }
   end
-  
+
   def find_all_by_updated_at(updated_at)
     invoices.select { |invoice| invoice.updated_at == updated_at }
   end
 
+  def find_transactions(id)
+    engine.find_transactions_by_invoice_id(id)
+  end
+
+  def find_invoice_items(id)
+    engine.find_invoice_items_by_invoice_id(id)
+  end
+
+  def find_customer(customer_id)
+    engine.find_customer_by_customer_id(id)
+  end
+
+  def find_merchant(id)
+    engine.find_merchant_by_merchant_id(id)
+  end
 end
