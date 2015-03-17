@@ -29,7 +29,7 @@ class Merchant
 
   def successful_invoices
     invoices.select do |invoice|
-
+      invoice.transactions.result == "success"
     end
   end
 

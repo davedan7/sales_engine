@@ -63,7 +63,7 @@ class SalesEngineTest < Minitest::Test
   def test_it_finds_transactions_by_invoice_id
     transactions = @engine.find_transactions_by_invoice_id(1)
     assert_equal 1, transactions.count
-    assert_equal 4654405418249632, transactions.first.credit_card_number
+    assert_equal "4654405418249632", transactions.first.credit_card_number
   end
 
   def test_it_finds_invoice_items_by_invoice_id
@@ -106,7 +106,7 @@ class SalesEngineTest < Minitest::Test
   def test_it_finds_invoice_items_by_item_id_for_items
     invoice_items = @engine.find_invoice_items_by_item_id(539)
     assert_equal 1, invoice_items.count
-    assert_equal 13635, invoice_items.first.unit_price
+    assert_equal BigDecimal.new(13635)/100, invoice_items.first.unit_price
   end
 
   def test_it_finds_merchant_by_merchant_id_for_items
