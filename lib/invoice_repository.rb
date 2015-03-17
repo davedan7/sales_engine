@@ -40,6 +40,10 @@ class InvoiceRepository
     invoices.select { |invoice| invoice.customer_id == customer_id }
   end
 
+  def find_all_by_invoice_id(invoice_id)
+    invoices.select { |invoice| invoice.invoice_id == invoice_id }
+  end
+
   def find_by_merchant_id(merchant_id)
     invoices.find { |invoice| invoice.merchant_id == merchant_id }
   end
