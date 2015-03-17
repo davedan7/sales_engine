@@ -19,11 +19,6 @@ class MerchantRepositoryTest < Minitest::Test
     assert_equal engine, merchant_repo.engine
   end
 
-  # def test_it_starts_with_zero_merchants
-  #   merchant_repo = MerchantRepository.new(nil, nil)
-  #   assert_equal [], merchant_repo.merchants
-  # end
-
   def test_it_returns_all_merchants
     merchant_repo = MerchantRepository.new(@fixtures, nil)
     

@@ -39,7 +39,7 @@ class InvoicesTest < Minitest::Test
   def test_invoice_has_date_of_creation_in_yyyymmdd_hhmmss_format
     invoice = Invoice.new(@data, nil)
 
-    assert_equal (Date.parse("2012-03-25 09:54:09 UTC")), invoice.created_at
+    assert_equal "2012-03-25 09:54:09 UTC", invoice.created_at
   end
 
   def test_invoice_has_update_date_in_yyyymmdd_hhmmss_format
