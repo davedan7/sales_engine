@@ -13,7 +13,6 @@ class ItemRepositoryTest < Minitest::Test
     assert ItemRepository.new(@fixtures, nil)
   end
 
-
   def test_it_knows_its_parent
     engine    = SalesEngine.new("stub")
     item_repo = ItemRepository.new(@fixtures, engine)
@@ -21,13 +20,11 @@ class ItemRepositoryTest < Minitest::Test
     assert_equal engine, item_repo.engine
   end
 
-
   def test_it_returns_all_item
     item_repo = ItemRepository.new(@fixtures, nil)
 
     refute item_repo.all.empty?
   end
-
 
   def test_it_returns_random_items
     item_repo = ItemRepository.new(@fixtures, nil)
@@ -41,7 +38,6 @@ class ItemRepositoryTest < Minitest::Test
 
     assert_equal 1, result.id
   end
-
 
   def test_it_can_find_all_by_id
     item_repo = ItemRepository.new(@fixtures, nil)

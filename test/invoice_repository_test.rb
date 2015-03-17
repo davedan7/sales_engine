@@ -38,7 +38,6 @@ class InvoiceRepositoryTest < Minitest::Test
     assert_equal 1, result.id
   end
 
-
   def test_it_can_find_all_by_id
     invoice_repo = InvoiceRepository.new(@fixtures, nil)
     result       = invoice_repo.find_all_by_id(4)
@@ -46,14 +45,12 @@ class InvoiceRepositoryTest < Minitest::Test
     assert_equal 1, result.count
   end
 
-
   def test_it_can_find_by_customer_id
     invoice_repo = InvoiceRepository.new(@fixtures, nil)
     result       = invoice_repo.find_by_customer_id(2)
 
     assert_equal 9, result.id
   end
-
 
   def test_it_can_find_all_by_customer_id
     invoice_repo = InvoiceRepository.new(@fixtures, nil)
