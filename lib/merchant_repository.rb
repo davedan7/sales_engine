@@ -66,4 +66,8 @@ class MerchantRepository
     engine.find_invoices_by_merchant_id(id)
   end
 
+  def most_revenue(x)
+    mechants.sort_by { }
+  end
+
 end
