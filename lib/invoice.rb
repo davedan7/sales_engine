@@ -1,3 +1,5 @@
+require 'date'
+
 class Invoice
   attr_reader :repository,
               :updated_at,
@@ -13,7 +15,7 @@ class Invoice
     @customer_id  = data[:customer_id].to_i
     @merchant_id  = data[:merchant_id].to_i
     @status       = data[:status]
-    @created_at   = data[:created_at]
+    @created_at   = Date.parse(data[:created_at])
     @updated_at   = data[:updated_at]
   end
 
@@ -25,14 +27,13 @@ class Invoice
     repository.find_invoice_items(id)
   end
 
-
-  # need to get this running
-  # def items
-  #   invoice_items.map { |invoice_item| invoice_item.item }
-  # end
+  # need tests for this?
+  def items
+    invoice_items.map { |invoice_item| invoice_item.item }
+  end
 
   def customer
-    respository.find_customer(id)
+    repository.find_customer(id)
   end
 
   def merchant
