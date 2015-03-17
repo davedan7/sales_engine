@@ -14,7 +14,6 @@ class InvoiceRepositoryTest < Minitest::Test
   end
 
   def test_it_knows_its_parent
-    skip
     engine       = SalesEngine.new("stub")
     invoice_repo = InvoiceRepository.new(@fixtures, engine)
 
