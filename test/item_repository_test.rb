@@ -6,7 +6,7 @@ class ItemRepositoryTest < Minitest::Test
   include Parser
 
   def setup 
-    @fixtures = parse("./test/fixtures/invoices.csv") 
+    @fixtures = parse("./test/fixtures/items.csv") 
   end
 
   def test_it_exists
@@ -51,15 +51,12 @@ class ItemRepositoryTest < Minitest::Test
   end
 
   def test_it_can_find_by_name
-    skip
     item_repo = ItemRepository.new(@fixtures, nil)
     result    = item_repo.find_by_name("Item Autem Minima")
-
     assert_equal 2, result.id
   end
 
   def test_it_can_find_all_by_name
-    skip
     item_repo = ItemRepository.new(@fixtures, nil)
     result    = item_repo.find_all_by_name("Item Autem Minima")
 
@@ -67,7 +64,7 @@ class ItemRepositoryTest < Minitest::Test
   end
 
   def test_it_can_find_by_desription
-    skip
+    
     item_repo = ItemRepository.new(@fixtures, nil)
     result    = item_repo.find_by_description("Sunt eum id eius magni consequuntur delectus veritatis. Quisquam laborum illo ut ab. Ducimus in est id voluptas autem.")
 
@@ -75,7 +72,7 @@ class ItemRepositoryTest < Minitest::Test
   end
 
   def test_it_can_find_all_by_description
-    skip
+    
     item_repo = ItemRepository.new(@fixtures, nil)
     result    = item_repo.find_all_by_description("Sunt eum id eius magni consequuntur delectus veritatis. Quisquam laborum illo ut ab. Ducimus in est id voluptas autem.")
 
@@ -83,7 +80,7 @@ class ItemRepositoryTest < Minitest::Test
   end
 
   def test_it_can_find_by_unit_price
-    skip
+    
     item_repo = ItemRepository.new(@fixtures, nil)
     result    = item_repo.find_by_unit_price(67076)
 
@@ -91,7 +88,7 @@ class ItemRepositoryTest < Minitest::Test
   end
 
   def test_it_can_find_all_by_unit_price
-    skip
+    
     item_repo = ItemRepository.new(@fixtures, nil)
     result    = item_repo.find_all_by_unit_price(4291)
 
@@ -99,15 +96,14 @@ class ItemRepositoryTest < Minitest::Test
   end
 
   def test_it_can_find_by_merchant_id
-    skip 
+     
     item_repo = ItemRepository.new(@fixtures, nil)
     result    = item_repo.find_by_merchant_id(1)
 
-    assert_equal "", result.id
+    assert_equal 1, result.id
   end
 
   def test_it_can_find_all_by_merchant_id
-    skip
     item_repo = ItemRepository.new(@fixtures, nil)
     result    = item_repo.find_all_by_merchant_id(1)
 
@@ -115,7 +111,6 @@ class ItemRepositoryTest < Minitest::Test
   end
 
   def test_it_can_find_by_created_at
-    skip
     item_repo = ItemRepository.new(@fixtures, nil)
     result    = item_repo.find_by_created_at("2012-03-27 14:53:59 UTC")
 
@@ -123,7 +118,6 @@ class ItemRepositoryTest < Minitest::Test
   end
 
   def test_it_can_find_all_by_created_at
-    skip
     item_repo = ItemRepository.new(@fixtures, nil)
     result    = item_repo.find_all_by_created_at("2012-03-27 14:53:59 UTC")
 
@@ -131,15 +125,13 @@ class ItemRepositoryTest < Minitest::Test
   end
 
   def test_it_can_find_by_updated_at
-    skip
     item_repo = ItemRepository.new(@fixtures, nil)
     result    = item_repo.find_by_updated_at("2012-03-27 14:53:59 UTC")
 
-    assert_equal 4, result.id
+    assert_equal 1, result.id
   end
 
   def test_it_can_find_all_by_updated_at
-    skip
     item_repo = ItemRepository.new(@fixtures, nil)
     result    = item_repo.find_all_by_updated_at("2012-03-27 14:53:59 UTC")
 
