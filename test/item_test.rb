@@ -34,7 +34,7 @@ class ItemTest < Minitest::Test
   def test_item_has_unit_price
     item = Item.new(@data, nil)
 
-    assert_equal 15285, item.unit_price
+    assert_equal (BigDecimal.new(15285)/100), item.unit_price
   end
 
   def test_item_has_merchant_id

@@ -49,11 +49,11 @@ class CustomerRepository
   end
 
   def find_by_created_at(created_at)
-    merchants.find { |customer| customer.created_at == created_at }
+    customers.find { |customer| customer.created_at == created_at }
   end
 
   def find_all_by_created_at(created_at)
-    merchants.select { |customer| customer.created_at == created_at }
+    customers.select { |customer| customer.created_at == created_at }
   end
 
   def find_by_updated_at(updated_at)
@@ -67,5 +67,4 @@ class CustomerRepository
   def find_invoices(id)
     engine.find_invoices_by_customer_id(id)
   end
-
 end
