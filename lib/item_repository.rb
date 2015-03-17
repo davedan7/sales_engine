@@ -33,11 +33,11 @@ class ItemRepository
   end
 
   def find_by_name(name)
-    items.find { |item| item.name.downcase == name.downcase }
+    items.find { |item| item.name == name }
   end
 
   def find_all_by_name(name)
-    items.select { |item| item.name.downcase == name.downcase }
+    items.select { |item| item.name == name }
   end
 
   def find_by_description(description)
