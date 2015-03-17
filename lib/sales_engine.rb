@@ -27,6 +27,7 @@ class SalesEngine
     create_merchant_repository
     create_customer_repository
     create_item_repository
+    create_invoice_repository
     create_transaction_repository
     create_invoice_item_repository
   end
@@ -62,7 +63,11 @@ class SalesEngine
   end
 
   def find_items_by_merchant_id(id)
-    item_repository.find_by_id(id)
+    item_repository.find_all_by_id(id)
+  end
+
+  def find_invoices_by_merchant_id(id)
+     invoice_repository.find_all_by_id(id)
   end
 
 end
