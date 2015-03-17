@@ -7,7 +7,7 @@ class MerchantRepositoryTest < Minitest::Test
   include Parser
 
   def setup
-    @fixtures = parse("./test/fixtures/merchants.csv") 
+    @fixtures = parse("./test/fixtures/merchants.csv")
   end
 
   def test_it_exists
