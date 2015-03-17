@@ -3,7 +3,7 @@ require_relative 'parser'
 
 class ItemRepository
 
-  attr_reader :items
+  attr_reader :items, :engine
 
   include Parser
 
@@ -78,6 +78,14 @@ class ItemRepository
 
   def find_all_by_updated_at(updated_at)
     items.select { |item| item.updated_at == updated_at }
+  end
+
+  def find_invoice_items(id)
+    engine.find_invoice_items_by_item_id(id)
+  end
+
+  def find_merchant(merchant_id)
+    engine.find_merchant_by_merchant_id_for_item(merchant_id)
   end
 
 end

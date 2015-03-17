@@ -1,5 +1,5 @@
 class Transaction
-  
+
   attr_reader :repository,
               :credit_card_expiration_date,
               :result,

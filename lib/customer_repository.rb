@@ -3,7 +3,7 @@ require_relative 'parser'
 
 class CustomerRepository
 
-  attr_reader :customers
+  attr_reader :customers, :engine
 
   include Parser
 
@@ -35,11 +35,11 @@ class CustomerRepository
   def find_by_first_name(first_name)
     customers.find { |customer| customer.first_name.downcase == first_name.downcase }
   end
-  
+
   def find_all_by_first_name(first_name)
     customers.select { |customer| customer.first_name.downcase == first_name.downcase }
   end
-  
+
   def find_by_last_name(last_name)
     customers.find { |customer| customer.last_name == last_name }
   end
@@ -59,7 +59,7 @@ class CustomerRepository
   def find_by_updated_at(updated_at)
     customers.find { |customer| customer.updated_at == updated_at }
   end
-  
+
   def find_all_by_updated_at(updated_at)
     customers.select { |customer| customer.updated_at == updated_at }
   end

@@ -3,6 +3,8 @@ require_relative 'parser'
 
 class TransactionRepository
 
+  attr_reader :transactions, :engine
+
   def initialize(data, engine)
     @engine = engine
     @transactions = data.map { |line| Transaction.new(line, self) }
@@ -39,7 +41,7 @@ class TransactionRepository
   def find_by_credit_card_number(credit_card_number)
     transactions.find { |transaction| transaction.credit_card_number.downcase == credit_card_number.downcase }
   end
-  
+
   def find_all_by_credit_card_number(credit_card_number)
     transactions.select { |transaction| transaction.credit_card_number.downcase == credit_card_number.downcase }
   end
@@ -70,7 +72,7 @@ class TransactionRepository
   def find_by_updated_at(updated_at)
     transactions.find { |transaction| transaction.updated_at == updated_at }
   end
-  
+
   def find_all_by_updated_at(updated_at)
     transactions.select { |transaction| transaction.updated_at == updated_at }
   end

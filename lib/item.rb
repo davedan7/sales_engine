@@ -20,4 +20,12 @@ class Item
     @updated_at  = data[:updated_at]
   end
 
+  def invoice_items
+    repository.find_invoice_items(id)
+  end
+
+  def merchant
+    repository.find_merchant(merchant_id)
+  end
+
 end

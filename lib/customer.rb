@@ -5,6 +5,7 @@ class Customer
               :last_name,
               :created_at,
               :updated_at
+              :repository
 
   def initialize(data, repository)
     @repository = repository
