@@ -10,11 +10,14 @@ class Merchant
     @name        = data[:name]
     @created_at  = data[:created_at]
     @updated_at  = data[:updated_at]
-    @repositiory = repository
+    @repository  = repository
   end
 
   def items
     repository.find_items(id)
   end
 
+  def invoices
+    repository.find_invoices(id)
+  end
 end

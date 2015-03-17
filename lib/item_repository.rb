@@ -25,59 +25,59 @@ class ItemRepository
   end
 
   def find_by_id(id)
-    items.find { |data| data.id == id }
+    items.find { |item| item.id == id }
   end
 
   def find_all_by_id(id)
-    items.select { |data| data.id == id }
+    items.select { |item| item.id == id }
   end
 
   def find_by_name(name)
-    items.find { |data| data.name.downcase == name.downcase }
+    items.find { |item| item.name.downcase == name.downcase }
   end
-  
+
   def find_all_by_name(name)
-    items.select { |data| data.name.downcase == name.downcase }
+    items.select { |item| item.name.downcase == name.downcase }
   end
-  
+
   def find_by_description(description)
-    items.find { |data| data.description == description }
+    items.find { |item| item.description == description }
   end
 
   def find_all_by_description(description)
-    items.select { |data| data.description == description }
+    items.select { |item| item.description == description }
   end
 
   def find_by_unit_price(unit_price)
-    items.find { |data| data.unit_price == unit_price }
+    items.find { |item| item.unit_price == unit_price }
   end
 
   def find_all_by_unit_price(unit_price)
-    items.select { |data| data.unit_price == unit_price }
+    items.select { |item| item.unit_price == unit_price }
   end
 
   def find_by_merchant_id(merchant_id)
-    items.find { |data| data.merchant_id == merchant_id }
+    items.find { |item| item.merchant_id == merchant_id }
   end
 
   def find_all_by_merchant_id(merchant_id)
-    items.select { |data| data.merchant_id == merchant_id }
+    items.select { |item| item.merchant_id == merchant_id }
   end
 
   def find_by_created_at(created_at)
-    items.find { |data| data.created_at == created_at }
+    items.find { |item| item.created_at == created_at }
   end
 
   def find_all_by_created_at(created_at)
-    items.select { |data| data.created_at == created_at }
+    items.select { |item| item.created_at == created_at }
   end
 
   def find_by_updated_at(updated_at)
-    items.find { |data| data.updated_at == updated_at }
+    items.find { |item| item.updated_at == updated_at }
   end
-  
+
   def find_all_by_updated_at(updated_at)
-    items.select { |data| data.updated_at == updated_at }
+    items.select { |item| item.updated_at == updated_at }
   end
 
 end
