@@ -26,7 +26,7 @@ class InvoiceRepositoryTest < Minitest::Test
     refute invoice_repo.all.empty?
   end
 
-  def test_it_returns_random_random_invoices
+  def test_it_returns_random_invoices
     invoice_repo = InvoiceRepository.new(@fixtures, nil)
 
     assert invoice_repo.random
