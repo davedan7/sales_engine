@@ -1,6 +1,6 @@
 require_relative 'test_helper'
-require_relative '../lib/invoice_repository'
 require_relative '../lib/item_repository'
+require 'bigdecimal'
 
 class ItemRepositoryTest < Minitest::Test
   include Parser
@@ -82,7 +82,7 @@ class ItemRepositoryTest < Minitest::Test
   def test_it_can_find_by_unit_price
     
     item_repo = ItemRepository.new(@fixtures, nil)
-    result    = item_repo.find_by_unit_price(67076)
+    result    = item_repo.find_by_unit_price(BigDecimal.new(67076)/100)
 
     assert_equal 2, result.id
   end
@@ -90,7 +90,7 @@ class ItemRepositoryTest < Minitest::Test
   def test_it_can_find_all_by_unit_price
     
     item_repo = ItemRepository.new(@fixtures, nil)
-    result    = item_repo.find_all_by_unit_price(4291)
+    result    = item_repo.find_all_by_unit_price(BigDecimal.new(4291)/100)
 
     assert_equal 1, result.count
   end
