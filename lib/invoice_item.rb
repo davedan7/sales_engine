@@ -28,4 +28,12 @@ class InvoiceItem
    repository.find_item(item_id)
   end
 
+  def revenue
+    quantity * unit_price
+  end
+
+  # def items_sold
+  #   quantity *
+  # end
+
 end

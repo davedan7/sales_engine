@@ -15,19 +15,19 @@ class MerchantRepositoryTest < Minitest::Test
   def test_it_knows_its_parent
     engine = SalesEngine.new("stub")
     merchant_repo = MerchantRepository.new(@fixtures, engine)
-    
+
     assert_equal engine, merchant_repo.engine
   end
 
   def test_it_returns_all_merchants
     merchant_repo = MerchantRepository.new(@fixtures, nil)
-    
+
     assert merchant_repo.merchants
   end
 
   def test_it_returns_random_merchants
     merchant_repo = MerchantRepository.new(@fixtures, nil)
-    
+
     assert merchant_repo.random
   end
 
@@ -44,4 +44,5 @@ class MerchantRepositoryTest < Minitest::Test
 
     assert_equal 10, found.id
   end
+  
 end

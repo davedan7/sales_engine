@@ -39,4 +39,9 @@ class Invoice
   def merchant
     repository.find_merchant(merchant_id)
   end
+
+  def revenue
+    revenue_items = invoice_items.map { |invoice_item| invoice_item.revenue}
+    revenue_items.reduce(0) { |sum, x| sum + x }
+  end
 end

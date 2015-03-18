@@ -88,4 +88,21 @@ class ItemRepository
     engine.find_merchant_by_merchant_id_for_item(merchant_id)
   end
 
+  # def item_revenue
+  #   items.sort_by { |item| item.revenue }
+  # end
+
+  def most_revenue(x)
+    # revenue of an item would be revenue of each invoice item summed
+    # sort by revenue, reverse, and take first(x)
+    items.sort_by { |item| item.revenue }.reverse.first(x)
+  end
+
+  def most_items(x)
+    # Find total sold for each item
+      # Successful transactions * invoice_item quantity
+    # sort, reverse, take first(x)
+
+  end
+
 end
