@@ -36,8 +36,8 @@ class TransactionRepositoryTest < Minitest::Test
     result           = transaction_repo.find_by_id(2)
 
     assert_equal "4580251236515201", result.credit_card_number
+    assert_equal 2, result.id
   end
-  # return the cc number ^^^ when searching by id?
 
   def test_it_finds_all_transactions_by_id
     transaction_repo = TransactionRepository.new(@fixtures, nil)
@@ -133,16 +133,14 @@ class TransactionRepositoryTest < Minitest::Test
   def test_it_finds_invoices_by_id
     engine           = FakeEngine.new
     transaction_repo = TransactionRepository.new(@fixtures, engine)
-    invoices         = transaction_repo.find_invoices(5)
+    invoices         = transaction_repo.find_invoice(5)
     
     assert_equal "test invoice 5", invoices 
   end
 end
 
 class FakeEngine
-  def find_invoices(invoice_id)
+  def find_invoice_by_id(invoice_id)
     "test invoice #{invoice_id}"
   end
 end
-
-
