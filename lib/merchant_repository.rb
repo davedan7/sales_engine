@@ -78,7 +78,7 @@ class MerchantRepository
   end
 
   def revenue(date)
-    # Could run revenue(date) for every merchant, but that would take forever... 
+    # Could run revenue(date) for every merchant, but that would take forever...
   end
 
 

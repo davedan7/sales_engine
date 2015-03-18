@@ -29,11 +29,22 @@ class InvoiceItem
   end
 
   def revenue
-    quantity * unit_price
+    @revenue ||= quantity * unit_price
   end
+
+
+  # def items_sold(id)
+  #   repository.find_all_by_item_id(id)
+  # end
 
   # def items_sold
   #   quantity *
   # end
+
+  #jeff notes
+
+  def successful?
+    invoice.successful?
+  end
 
 end

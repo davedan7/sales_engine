@@ -60,9 +60,6 @@ class Merchant
   end
 
   def items_sold
-    #for each successful invoice
-    #total how many invoice items are connected for each invoice
-    #sum all of the total invoices
     successful_invoices.map { |invoice| invoice.items.size }.reduce(:+)
   end
 
