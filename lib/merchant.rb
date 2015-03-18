@@ -66,4 +66,8 @@ class Merchant
     successful_invoices.map { |invoice| invoice.items.size }.reduce(:+)
   end
 
+  # def revenue(date)
+  #
+  # end
+
 end

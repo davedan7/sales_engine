@@ -27,6 +27,10 @@ class Item
     repository.find_invoice_items(id)
   end
 
+  def successful_invoice_items
+    invoice_items.select(&:successful?)
+  end
+
   def revenue
     revenue_per_item = invoice_items.map { |invoice_item| invoice_item.revenue }
     revenue_summed   = revenue_per_item.reduce(0, :+)
@@ -43,6 +47,12 @@ class Item
     most_sold = invoice_items.max_by { |invoice_item| invoice_item.quantity }
     date      = most_sold.invoice.created_at
     Date.parse(date)
+  end
+
+  def number_sold
+    # find invoice items with this item id
+    items = successful_invoice_items.map { |invoice_item| invoice_item.quantity }
+    items.reduce(0) { |sum, x| sum + x }
   end
 
 end

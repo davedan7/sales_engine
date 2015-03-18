@@ -83,6 +83,12 @@ class InvoiceItemRepository
   end
 
   def find_item(item_id)
-   engine.find_item_by_item_id(item_id) 
+   engine.find_item_by_item_id(item_id)
   end
+
+  # def find_items_sold(id)
+  #   items_by_id = invoice_items.select { |invoice_item| invoice_item.item_id == id }
+  #   items_by_id.
+  # end
+
 end

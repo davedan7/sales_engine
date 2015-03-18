@@ -30,7 +30,8 @@ class Customer
 
   def successful_invoices
     invoices.select do |invoice|
-      invoice.transactions.any? { |transaction| transaction.result == "success" }
+      # invoice.transactions.any? { |transaction| transaction.result == "success" }
+      invoice.successful?
     end
   end
 
@@ -38,5 +39,10 @@ class Customer
     merchants_purchased_from = successful_invoices.group_by { |invoice| invoice.merchant }
     merchants_purchased_from.keys.max
   end
+
+  # def favorite_merchant
+  #   merchants_purchased_from = successful_invoices.max_by { |invoice| invoice.merchant }
+  #   merchants_purchased_from.first
+  # end
 
 end
