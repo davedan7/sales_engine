@@ -44,7 +44,7 @@ class Item
   # This finds the invoice item with highest quantity and passes spec harness, but I think its flawed.
   # It never actually counts invidividual items sold during a day. Need to refactor
   def best_day
-    most_sold = invoice_items.max_by { |invoice_item| invoice_item.quantity }
+    most_sold = successful_invoice_items.max_by { |invoice_item| invoice_item.quantity }
     date      = most_sold.invoice.created_at
     Date.parse(date)
   end
