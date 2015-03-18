@@ -66,5 +66,20 @@ class MerchantRepository
     engine.find_invoices_by_merchant_id(id)
   end
 
+  def most_revenue(x)
+    sorted = merchants.sort_by {|merchant| merchant.revenue }.reverse!
+    sorted.first(x)
+  end
+
+  def most_items(x)
+    # create items sold for merchant class, then sort by that
+    sorted = merchants.sort_by { |merchant| merchant.items_sold }.reverse!
+    sorted.first(x)
+  end
+
+  def revenue(date)
+    # Could run revenue(date) for every merchant, but that would take forever... 
+  end
+
 
 end
