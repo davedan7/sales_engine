@@ -54,9 +54,8 @@ class MerchantRepository
     merchants.find { |merchant| merchant.updated_at == updated_at }
   end
 
-  def find_all_by_updated_at(updated_at)
-    merchants.select { |merchant| merchant.updated_at == updated_at }
-  end
+  # def find_all_by_updated_at(updated_at)
+  # end
 
   def find_items(id)
     engine.find_items_by_merchant_id(id)
@@ -79,6 +78,8 @@ class MerchantRepository
 
   def revenue(date)
     # Could run revenue(date) for every merchant, but that would take forever...
+    revenue_per_merchant = merchants.map { |merchant| merchant.revenue(date)}
+    revenue_per_merchant.reduce(0) { |sum, x| sum + x }
   end
 
 
