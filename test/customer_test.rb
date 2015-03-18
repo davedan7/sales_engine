@@ -40,4 +40,17 @@ class CustomerTest < Minitest::Test
 
     assert_equal "2012-03-27 14:54:10 UTC", customer.updated_at
   end
+
+  def test_it_finds_invoices
+    repository = FakeRepository.new
+    customer   = Customer.new(@data, repository)
+
+    assert_equal "invoice 3", customer.invoices
+  end
+end
+
+class FakeRepository
+  def find_invoices(id)
+    "invoice #{id}"
+  end
 end
