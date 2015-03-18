@@ -1,6 +1,5 @@
 require_relative 'item'
 require_relative 'parser'
-require 'pry'
 
 class ItemRepository
 
