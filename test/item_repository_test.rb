@@ -133,4 +133,30 @@ class ItemRepositoryTest < Minitest::Test
 
     assert_equal 10, result.count
   end
+
+  def test_it_can_find_invoice_items
+    engine       = FakeEngine.new
+    item_repo    = ItemRepository.new(@fixtures, engine)
+    invoice_item = item_repo.find_invoice_items(3)
+
+    assert_equal "invoice item 3", invoice_item
+  end
+
+  def test_it_can_find_merchant_by_merchant_id
+    engine       = FakeEngine.new
+    item_repo    = ItemRepository.new(@fixtures, engine)
+    merchant     = item_repo.find_merchant(1)
+
+    assert "merchant id 1"
+  end 
+end
+
+class FakeEngine
+  def find_invoice_items_by_item_id(id)
+    "invoice item #{id}"
+  end
+
+  def find_merchant_by_merchant_id_for_item(merchant_id)
+    "merchant id #{merchant_id}"
+  end
 end

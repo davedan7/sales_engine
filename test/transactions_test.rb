@@ -48,4 +48,20 @@ class TransactionTest < Minitest::Test
 
     assert_equal "2012-03-27 14:54:09 UTC", transaction.updated_at
   end
+
+  def test_it_can_find_invoice_by_invoice_id
+    repo        = FakeRepository.new
+    transaction = Transaction.new(@data, repo)
+    invoice     = transaction.invoice
+
+    assert_equal "invoice number 2", invoice
+  end
+end
+
+#  invoice 2 for cc #4580251236515201 
+
+class FakeRepository
+  def find_invoice(invoice_id)
+    "invoice number #{invoice_id}"
+  end
 end
