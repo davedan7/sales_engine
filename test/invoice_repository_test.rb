@@ -114,4 +114,55 @@ class InvoiceRepositoryTest < Minitest::Test
 
     assert_equal 1, result.count
   end
+
+  def test_it_finds_transactions_by_invoice_id
+    engine       = FakeEngine.new
+    invoice_repo = InvoiceRepository.new(@fixtures, engine)
+    transaction  = invoice_repo.find_transactions(1)
+
+    assert_equal "transaction id number 1", transaction
+  end
+
+  def test_it_finds_invoice_items_by_invoice_id
+    engine        = FakeEngine.new
+    invoice_repo  = InvoiceRepository.new(@fixtures, engine)
+    invoice_items  = invoice_repo.find_invoice_items(6)
+
+    assert_equal "invoice item 6", invoice_items
+  end
+ 
+  def test_it_finds_customer_by_customer_id
+    engine        = FakeEngine.new
+    invoice_repo  = InvoiceRepository.new(@fixtures, engine)
+    customer      = invoice_repo.find_customer(2)
+
+    assert_equal "customer id 2", customer
+  end
+
+  def test_it_finds_merchant_by_merchant_id
+    engine        = FakeEngine.new
+    invoice_repo  = InvoiceRepository.new(@fixtures, engine)
+    merchant      = invoice_repo.find_merchant(2)
+
+    assert_equal "merchant number 2", merchant
+  end
+
+end
+
+class FakeEngine
+  def find_transactions_by_invoice_id(id)
+    "transaction id number #{id}"
+  end
+
+  def find_invoice_items_by_invoice_id(id)
+    "invoice item #{id}"
+  end
+
+  def find_customer_by_customer_id(customer_id)
+    "customer id #{customer_id}"
+  end
+
+  def find_merchant_by_merchant_id(merchant_id)
+    "merchant number #{merchant_id}"
+  end
 end
