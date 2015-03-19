@@ -95,4 +95,26 @@ class InvoiceRepository
   def successful_invoices
     invoices.select { |invoice| invoice.successful? }
   end
+
+  def create(inputs)
+    data = {
+      :id          => invoices.last.id + 1,
+      :customer_id => inputs[:customer].id,
+      :merchant_id => inputs[:merchant].id,
+      :status      => inputs[:status],
+      :created_at  => Time.now,
+      :updated_at  => Time.now
+    }
+
+    invoice = Invoice.new(data, self)
+    @invoices << invoice
+
+    engine.create_invoice_item(inputs[:items], invoice.id)
+    invoice
+    # invoice.add_items(inputs[:items])
+  end
+
+  def charge(charge_information, id)
+    engine.create_new_charge(charge_information, id)
+  end
 end

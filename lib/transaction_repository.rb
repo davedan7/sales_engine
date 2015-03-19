@@ -82,4 +82,22 @@ class TransactionRepository
     engine.find_invoice_by_id(invoice_id)
   end
 
+  def create_new_charge(charge_information, id)
+
+    data = {
+      :repository                  => self,
+      :id                          => transactions.last.id + 1,
+      :invoice_id                  => id,
+      :credit_card_number          => charge_information[:credit_card_number],
+      :credit_card_expiration_date => charge_information[:credit_card_expiration_date],
+      :result                      => charge_information[:result],
+      :created_at                  => Time.now,
+      :updated_at                  => Time.now
+    }
+
+    t = Transaction.new(data, self)
+    transactions << t
+
+  end
+
 end

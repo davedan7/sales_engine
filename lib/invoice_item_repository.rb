@@ -86,6 +86,25 @@ class InvoiceItemRepository
    engine.find_item_by_item_id(item_id)
   end
 
+  def create_invoice_item(inputs, id)
+    grouped = inputs.inject(Hash.new(0)) { |hash, x| hash[x] += 1 ; hash }
+    items = inputs.uniq
+    items.each do |item|
+
+      data = {
+        :id         => invoice_items.last.id + 1,
+        :item_id    => item.id,
+        :invoice_id => id,
+        :quantity   => grouped[item],
+        :unit_price => item.unit_price,
+        :created_at => Time.now,
+        :updated_at => Time.now
+              }
+      ii = InvoiceItem.new(data, self)
+      invoice_items << ii
+    end
+  end
+
   # def find_items_sold(id)
   #   items_by_id = invoice_items.select { |invoice_item| invoice_item.item_id == id }
   #   items_by_id.
