@@ -22,7 +22,7 @@ class MerchantRepositoryTest < Minitest::Test
   def test_it_returns_all_merchants
     merchant_repo = MerchantRepository.new(@fixtures, nil)
 
-    assert merchant_repo.merchants
+    refute merchant_repo.all.empty?
   end
 
   def test_it_returns_random_merchants
@@ -46,51 +46,64 @@ class MerchantRepositoryTest < Minitest::Test
   end
 
   def test_it_can_find_by_created_at
-    data = parse("./data/merchants.csv")
+    data                = parse("./data/merchants.csv")
     merchant_repository = MerchantRepository.new(data, nil)
-    result = merchant_repository.find_by_created_at("2012-03-27 14:53:59 UTC")
+    result              = merchant_repository.find_by_created_at("2012-03-27 14:53:59 UTC")
 
     assert_equal "2012-03-27 14:53:59 UTC", result.created_at
   end
 
   def test_it_can_find_by_updated_at
-    data = parse("./data/merchants.csv")
+    data                = parse("./data/merchants.csv")
     merchant_repository = MerchantRepository.new(data, nil)
-    result = merchant_repository.find_by_updated_at("2012-03-27 14:53:59 UTC")
+    result              = merchant_repository.find_by_updated_at("2012-03-27 14:53:59 UTC")
 
     assert_equal "2012-03-27 14:53:59 UTC", result.updated_at
   end
 
   def test_it_can_find_all_by_id
-    data = parse("./data/merchants.csv")
+    data                = parse("./data/merchants.csv")
     merchant_repository = MerchantRepository.new(data, nil)
-    result = merchant_repository.find_all_by_id(4)
+    result              = merchant_repository.find_all_by_id(4)
 
     assert_equal 1, result.count
   end
 
   def test_it_can_find_all_by_name
-    data = parse("./data/merchants.csv")
+    data                = parse("./data/merchants.csv")
     merchant_repository = MerchantRepository.new(data, nil)
-    result = merchant_repository.find_all_by_name("Brown Inc")
+    result              = merchant_repository.find_all_by_name("Brown Inc")
 
     assert_equal 1, result.count
   end
 
   def test_it_can_find_all_by_created_at
-    data = parse("./data/merchants.csv")
+    data                = parse("./data/merchants.csv")
     merchant_repository = MerchantRepository.new(data, nil)
-    result = merchant_repository.find_all_by_created_at("2012-03-27 14:53:59 UTC")
+    result              = merchant_repository.find_all_by_created_at("2012-03-27 14:53:59 UTC")
 
     assert_equal 9, result.count
   end
 
   def test_it_can_find_all_by_updated_at
-    data = parse("./data/merchants.csv")
+    data                = parse("./data/merchants.csv")
     merchant_repository = MerchantRepository.new(data, nil)
-    result = merchant_repository.find_all_by_updated_at("2012-03-27 14:53:59 UTC")
+    result              = merchant_repository.find_all_by_updated_at("2012-03-27 14:53:59 UTC")
 
     assert_equal 8, result.count
   end
 
+  def test_it_can_find_items_by_merchant_id
+    engine              = FakeEngine.new
+    merchant_repository = MerchantRepository.new(@fixtures, engine)
+    item                = merchant_repository.find_items(3)
+
+    assert_equal "item 3", item
+  end
+end
+
+class FakeEngine
+  def find_items_by_merchant_id(id)
+    "item #{id}"
+  end
 end
