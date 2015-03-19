@@ -40,4 +40,12 @@ class CustomerTest < Minitest::Test
 
     assert_equal "2012-03-27 14:54:10 UTC", customer.updated_at
   end
+
+  def test_it_can_get_its_transactions
+    sales_engine = SalesEngine.new("./data")
+    sales_engine.startup
+
+    assert_equal 8, sales_engine.customer_repository.customers[0].transactions.size
+  end
+
 end

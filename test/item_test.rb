@@ -12,11 +12,11 @@ class ItemTest < Minitest::Test
               created_at: "2012-03-27 14:53:59 UTC",
               updated_at: "2012-03-27 14:53:59 UTC" }
   end
-  
+
   def test_it_has_a_default_id
     item = Item.new(@data, nil)
 
-    assert_equal 28, item.id 
+    assert_equal 28, item.id
   end
 
   def test_item_has_name
@@ -40,7 +40,7 @@ class ItemTest < Minitest::Test
   def test_item_has_merchant_id
     item = Item.new(@data, nil)
 
-    assert_equal 2, item.merchant_id 
+    assert_equal 2, item.merchant_id
   end
 
   def test_item_has_date_of_creation_in_yyyymmdd_hhmms_format
@@ -54,4 +54,5 @@ class ItemTest < Minitest::Test
 
     assert_equal "2012-03-27 14:53:59 UTC", item.updated_at
   end
+
 end

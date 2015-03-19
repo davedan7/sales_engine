@@ -44,5 +44,53 @@ class MerchantRepositoryTest < Minitest::Test
 
     assert_equal 10, found.id
   end
-  
+
+  def test_it_can_find_by_created_at
+    data = parse("./data/merchants.csv")
+    merchant_repository = MerchantRepository.new(data, nil)
+    result = merchant_repository.find_by_created_at("2012-03-27 14:53:59 UTC")
+
+    assert_equal "2012-03-27 14:53:59 UTC", result.created_at
+  end
+
+  def test_it_can_find_by_updated_at
+    data = parse("./data/merchants.csv")
+    merchant_repository = MerchantRepository.new(data, nil)
+    result = merchant_repository.find_by_updated_at("2012-03-27 14:53:59 UTC")
+
+    assert_equal "2012-03-27 14:53:59 UTC", result.updated_at
+  end
+
+  def test_it_can_find_all_by_id
+    data = parse("./data/merchants.csv")
+    merchant_repository = MerchantRepository.new(data, nil)
+    result = merchant_repository.find_all_by_id(4)
+
+    assert_equal 1, result.count
+  end
+
+  def test_it_can_find_all_by_name
+    data = parse("./data/merchants.csv")
+    merchant_repository = MerchantRepository.new(data, nil)
+    result = merchant_repository.find_all_by_name("Brown Inc")
+
+    assert_equal 1, result.count
+  end
+
+  def test_it_can_find_all_by_created_at
+    data = parse("./data/merchants.csv")
+    merchant_repository = MerchantRepository.new(data, nil)
+    result = merchant_repository.find_all_by_created_at("2012-03-27 14:53:59 UTC")
+
+    assert_equal 9, result.count
+  end
+
+  def test_it_can_find_all_by_updated_at
+    data = parse("./data/merchants.csv")
+    merchant_repository = MerchantRepository.new(data, nil)
+    result = merchant_repository.find_all_by_updated_at("2012-03-27 14:53:59 UTC")
+
+    assert_equal 8, result.count
+  end
+
 end

@@ -34,4 +34,35 @@ class MerchantTest < Minitest::Test
 
     assert_equal "2012-03-27 14:54:00 UTC", merchant.updated_at
   end
+
+  def test_it_can_talk_to_the_repository_with_items
+    parent = Minitest::Mock.new
+    merchant = Merchant.new(@data, parent)
+    parent.expect(:find_items, [1, 2], [1])
+    assert_equal [1, 2], merchant.items
+    parent.verify
+  end
+
+  def test_it_can_talk_to_the_repository_with_invoices
+    parent = Minitest::Mock.new
+    merchant = Merchant.new(@data, parent)
+    parent.expect(:find_invoices, [1, 2], [1])
+    assert_equal [1, 2], merchant.invoices
+    parent.verify
+  end
+
+  def test_it_can_find_its_total_revenue
+    sales_engine = SalesEngine.new("./data")
+    sales_engine.startup
+
+    assert_equal "338055.54", sales_engine.merchant_repository.merchants[2].revenue.to_digits
+  end
+
+  def test_it_can_find_its_favorite_customer
+    sales_engine = SalesEngine.new("./data")
+    sales_engine.startup
+
+    assert_equal "Kuhn", sales_engine.merchant_repository.merchants[50].favorite_customer.last_name
+  end
+
 end

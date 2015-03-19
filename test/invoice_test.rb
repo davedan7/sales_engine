@@ -47,4 +47,11 @@ class InvoicesTest < Minitest::Test
 
     assert_equal "2012-03-25 09:54:09 UTC", invoice.updated_at
   end
+  
+  def test_it_can_get_its_items
+    sales_engine = SalesEngine.new("./data")
+    sales_engine.startup
+
+    assert_equal 8, sales_engine.invoice_repository.invoices[0].items.size
+  end
 end
