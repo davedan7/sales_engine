@@ -111,7 +111,6 @@ class InvoiceRepository
 
     engine.create_invoice_item(inputs[:items], invoice.id)
     invoice
-    # invoice.add_items(inputs[:items])
   end
 
   def charge(charge_information, id)

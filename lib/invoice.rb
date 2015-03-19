@@ -27,14 +27,13 @@ class Invoice
     repository.find_invoice_items(id)
   end
 
-  def successful? #from Jeff's talk
-    # transactions.any? { |transaction| transaction.successful? }
-    !pending?
+  def successful?
+    transactions.any?(&:successful?)
   end
 
-  def pending?
-    transactions.none?(&:successful?)
-  end
+  # def pending?
+  #   transactions.none?(&:successful?)
+  # end
 
   def items
     invoice_items.map { |invoice_item| invoice_item.item }

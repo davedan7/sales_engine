@@ -24,13 +24,8 @@ class Customer
     invoices.map { |invoice| invoice.transactions }
   end
 
-  # def successful_transactions
-  #   transactions.select { |transaction| transaction.result == "success"}
-  # end
-
   def successful_invoices
     invoices.select do |invoice|
-      # invoice.transactions.any? { |transaction| transaction.result == "success" }
       invoice.successful?
     end
   end
@@ -39,10 +34,5 @@ class Customer
     merchants_purchased_from = successful_invoices.group_by { |invoice| invoice.merchant }
     merchants_purchased_from.keys.max
   end
-
-  # def favorite_merchant
-  #   merchants_purchased_from = successful_invoices.max_by { |invoice| invoice.merchant }
-  #   merchants_purchased_from.first
-  # end
 
 end

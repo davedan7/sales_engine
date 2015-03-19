@@ -50,7 +50,6 @@ class Item
   end
 
   def number_sold
-    # find invoice items with this item id
     items = successful_invoice_items.map { |invoice_item| invoice_item.quantity }
     items.reduce(0) { |sum, x| sum + x }
   end
