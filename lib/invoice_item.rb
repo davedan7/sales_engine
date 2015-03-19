@@ -32,9 +32,6 @@ class InvoiceItem
     @revenue ||= quantity * unit_price
   end
 
-
-  #jeff notes
-
   def successful?
     invoice.successful?
   end

@@ -8,8 +8,6 @@ class MerchantRepository
   include Parser
 
   def initialize(data, engine)
-    # needs to store all merchant data as instances in an array (use map?)
-    # needs to reference the engine
     @engine    = engine
     @merchants = data.map { |line| Merchant.new(line, self) }
   end
@@ -72,13 +70,11 @@ class MerchantRepository
   end
 
   def most_items(x)
-    # create items sold for merchant class, then sort by that
     sorted = merchants.sort_by { |merchant| merchant.items_sold }.reverse!
     sorted.first(x)
   end
 
   def revenue(date)
-    # Could run revenue(date) for every merchant, but that would take forever...
     revenue_per_merchant = merchants.map { |merchant| merchant.revenue(date)}
     revenue_per_merchant.reduce(0) { |sum, x| sum + x }
   end

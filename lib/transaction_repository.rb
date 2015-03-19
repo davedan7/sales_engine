@@ -97,7 +97,6 @@ class TransactionRepository
 
     t = Transaction.new(data, self)
     transactions << t
-
   end
 
 end
