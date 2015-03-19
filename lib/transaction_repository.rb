@@ -83,7 +83,6 @@ class TransactionRepository
   end
 
   def create_new_charge(charge_information, id)
-
     data = {
       :repository                  => self,
       :id                          => transactions.last.id + 1,
