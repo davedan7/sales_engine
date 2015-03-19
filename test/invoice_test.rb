@@ -47,4 +47,54 @@ class InvoicesTest < Minitest::Test
 
     assert_equal "2012-03-25 09:54:09 UTC", invoice.updated_at
   end
+
+  def test_it_can_find_transactions
+    repository  = FakeRepository.new
+    invoice     = Invoice.new(@data, repository)
+    transaction = invoice.transactions
+
+    assert_equal "transaction 2", transaction
+  end
+
+  def test_it_finds_invoice_items
+    repository   = FakeRepository.new
+    invoice      = Invoice.new(@data, repository)
+    item         = invoice.invoice_items
+
+    assert_equal "invoice item 2", item
+  end
+
+  def test_it_finds_customer_by_customer_id
+    repository   = FakeRepository.new
+    invoice      = Invoice.new(@data, repository)
+    customer     = invoice.customer
+
+    assert_equal "customer 1", customer
+  end
+
+  def test_it_finds_merchant_by_merchant_id
+    repository   = FakeRepository.new
+    invoice      = Invoice.new(@data, repository)
+    merchant     = invoice.merchant
+
+    assert_equal "merchant 75", merchant
+  end
+end
+
+class FakeRepository
+  def find_transactions(id)
+    "transaction #{id}"
+  end
+
+  def find_invoice_items(id)
+    "invoice item #{id}"
+  end
+
+  def find_customer(customer_id)
+    "customer #{customer_id}"
+  end
+
+  def find_merchant(merchant_id)
+    "merchant #{merchant_id}"
+  end
 end
