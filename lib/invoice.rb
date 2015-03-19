@@ -36,11 +36,6 @@ class Invoice
     transactions.none?(&:successful?)
   end
 
-  # def successful_invoices
-  #   transactions.select { |transaction| transaction.status == "success"}
-  # end
-
-  # need tests for this?
   def items
     invoice_items.map { |invoice_item| invoice_item.item }
   end
@@ -57,4 +52,9 @@ class Invoice
     revenue_items = invoice_items.map { |invoice_item| invoice_item.revenue}
     revenue_items.reduce(0) { |sum, x| sum + x }
   end
+
+  def charge(charge_information)
+    repository.charge(charge_information, id)
+  end
+
 end

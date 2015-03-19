@@ -33,14 +33,6 @@ class InvoiceItem
   end
 
 
-  # def items_sold(id)
-  #   repository.find_all_by_item_id(id)
-  # end
-
-  # def items_sold
-  #   quantity *
-  # end
-
   #jeff notes
 
   def successful?

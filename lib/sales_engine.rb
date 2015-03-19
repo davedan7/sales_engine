@@ -114,4 +114,12 @@ class SalesEngine
     invoice_repository.find_all_by_customer_id(id)
   end
 
+  def create_invoice_item(inputs, id)
+    invoice_item_repository.create_invoice_item(inputs, id)
+  end
+
+  def create_new_charge(charge_information, id)
+    transaction_repository.create_new_charge(charge_information, id)
+  end
+
 end
