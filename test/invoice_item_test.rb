@@ -59,11 +59,11 @@ class InvoiceItemTest < Minitest::Test
     repository   = FakeRepository.new
     invoice_item = InvoiceItem.new(@data, repository)
 
-    assert_equal "invoice 1", invoice_item.invoice
+    assert_equal "invoice number 1", invoice_item.invoice
   end
 
   def test_it_can_find_item_by_item_id
-    repository   = FakeRepository.new
+    repository    = FakeRepository.new
     result        = InvoiceItem.new(@data, repository)
 
     assert_equal "item 539", result.item
