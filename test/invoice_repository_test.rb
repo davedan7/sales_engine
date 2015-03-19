@@ -4,8 +4,8 @@ require_relative '../lib/invoice_repository'
 class InvoiceRepositoryTest < Minitest::Test
   include Parser
 
-  def setup 
-    @fixtures = parse("./test/fixtures/invoices.csv") 
+  def setup
+    @fixtures = parse("./test/fixtures/invoices.csv")
   end
 
   def test_it_exits
@@ -43,6 +43,12 @@ class InvoiceRepositoryTest < Minitest::Test
     result       = invoice_repo.find_all_by_id(4)
 
     assert_equal 1, result.count
+  end
+
+  def test_it_can_produce_random_sample
+    invoice_repo = InvoiceRepository.new(@fixtures, nil)
+    sample = invoice_repo.random
+    assert sample
   end
 
   def test_it_can_find_by_customer_id
@@ -130,7 +136,7 @@ class InvoiceRepositoryTest < Minitest::Test
 
     assert_equal "invoice item 6", invoice_items
   end
- 
+
   def test_it_finds_customer_by_customer_id
     engine        = FakeEngine.new
     invoice_repo  = InvoiceRepository.new(@fixtures, engine)

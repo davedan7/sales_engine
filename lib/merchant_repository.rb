@@ -54,8 +54,9 @@ class MerchantRepository
     merchants.find { |merchant| merchant.updated_at == updated_at }
   end
 
-  # def find_all_by_updated_at(updated_at)
-  # end
+  def find_all_by_updated_at(updated_at)
+    merchants.select { |merchant| merchant.updated_at == updated_at }
+  end
 
   def find_items(id)
     engine.find_items_by_merchant_id(id)
